@@ -1,0 +1,79 @@
+(async () => {
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+
+  // ── STEP 1: Scroll slowly so Pinterest has time to load images ──
+  console.log('📜 Scrolling the page... this takes about 60 seconds, please wait.');
+  for (let i = 1; i <= 100; i++) {
+    window.scrollBy(0, 1500);
+    await wait(500);
+    if (i % 20 === 0) console.log(`   Still scrolling... ${i}% done`);
+  }
+  await wait(3000);
+  console.log('✅ Scroll complete. Now scanning for image URLs...');
+
+  // ── STEP 2: Scan the ENTIRE raw page code for pinimg.com URLs ──
+  // This catches URLs hidden inside JavaScript data, not just <img> tags
+  const fullHTML = document.documentElement.innerHTML;
+  const found = new Set();
+
+  // Search for any URL containing pinimg.com
+  const regex = /https?:\\?\/\\?\/[a-zA-Z0-9\-]+\.pinimg\.com[^"'\s<>\)\\]+/gi;
+  let match;
+  while ((match = regex.exec(fullHTML)) !== null) {
+    // Clean up backslashes that appear in JSON-encoded URLs
+    const cleaned = match[0].replace(/\\\//g, '/');
+    found.add(cleaned);
+  }
+
+  // ── STEP 3: Also check <img> tags directly as a backup ──
+  document.querySelectorAll('img').forEach(img => {
+    for (const attr of ['src', 'data-src', 'data-original', 'data-lazy-src']) {
+      const val = img.getAttribute(attr);
+      if (val && val.includes('pinimg.com')) found.add(val);
+    }
+    (img.getAttribute('srcset') || '').split(',').forEach(part => {
+      const url = part.trim().split(/\s+/)[0];
+      if (url && url.includes('pinimg.com')) found.add(url);
+    });
+  });
+
+  // ── STEP 4: Upgrade every URL to full original resolution ──
+  const upgraded = [...found].map(url =>
+    url.replace(/\/\d+x\//, '/originals/')
+       .replace(/\/\d+x\d+\//, '/originals/')
+  );
+
+  const uniq = [...new Set(upgraded)];
+  console.log(`🎯 Found ${uniq.length} unique image URLs!`);
+
+  // ── STEP 5: Save as a downloadable .txt file ──
+  // This goes straight to your Downloads folder — no clipboard needed
+  const text = uniq.join('\n');
+  const blob = new Blob([text], { type: 'text/plain' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = 'pinterest_image_urls.txt';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  console.log('💾 File downloaded: pinterest_image_urls.txt');
+
+  // ── STEP 6: Also attempt clipboard copy as a bonus ──
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    const worked = document.execCommand('copy');
+    document.body.removeChild(ta);
+    if (worked) console.log('✅ Also copied to clipboard!');
+    else console.log('⚠️ Clipboard failed, but the file was downloaded fine.');
+  } catch (e) {
+    console.log('⚠️ Clipboard failed, but the file was downloaded fine.');
+  }
+
+  return `✅ ALL DONE — ${uniq.length} URLs saved to pinterest_image_urls.txt in your Downloads folder.`;
+})();

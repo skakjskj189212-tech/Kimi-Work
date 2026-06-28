@@ -1,301 +1,150 @@
-# Pinterest Search Strategy: Nyra Character Reference Collection
+# Pinterest Search Terms — Nyra Reference Collection
 
-> **Character:** Nyra — Mixed European-American, 24, athletic-slim, attractive, relatable US beauty standard  
-> **Goal:** Collect 50–100 reference images organized by category to guide ComfyUI generation  
-> **Platform:** Pinterest (use boards to organize by category)
-
----
-
-## How to Use This Guide
-
-1. **Create one Pinterest board per category** (Face, Hair, Outfits, Poses, Lighting, Environments, Mood)
-2. **Save 5–15 images per board** — quality over quantity
-3. **Only save images that match Nyra's archetype** — if the face/hair/body is wrong, skip it
-4. **Prioritize photorealistic images** — avoid illustrations, heavy filters, or AI art
-5. **Use the "What to look for" checklist** when deciding to save an image
+> **Character:** Nyra | Mixed European-American | 24yo | Warm beige skin | Hazel-green eyes | Light brown wavy hair | Athletic-slim | Girl-next-door meets editorial
+> **Goal:** 60–80 diverse pins → QC → 5 face anchors for ComfyUI ReferenceLatent
 
 ---
 
-## 1. Face References (Board: "Nyra — Face")
-
-### Search Terms (use individually, not combined)
-
-| # | Search Term | Expected Results |
-|---|-------------|-----------------|
-| 1 | `woman face close up portrait natural beauty` | Clean headshots, minimal makeup, natural skin texture |
-| 2 | `attractive woman face oval heart shaped high cheekbones` | Faces with defined bone structure, editorial quality |
-| 3 | `hazel green eyes woman portrait natural light` | Eye-focused portraits with warm lighting |
-| 4 | `woman straight nose slight upturn profile` | Profile and three-quarter angles showing nose shape |
-| 5 | `woman full lips natural smile portrait photography` | Lip and smile reference, candid expressions |
-| 6 | `girl next door beauty portrait DSLR` | Approachable, relatable attractive women |
-| 7 | `young woman natural arch eyebrows portrait` | Eyebrow shape reference, close-up face shots |
-| 8 | `warm beige skin tone woman portrait photography` | Skin tone consistency reference across lighting |
-| 9 | `woman defined jawline portrait side profile` | Jawline and chin structure, profile angles |
-| 10 | `all american beauty portrait natural makeup` | US beauty standard archetype, fresh healthy look |
-
-### What to Look For
-- [ ] Oval to heart-shaped face with high cheekbones
-- [ ] Defined jawline (not overly sharp, not soft/round)
-- [ ] Straight nose with slight upturn at the tip
-- [ ] Almond-shaped eyes, bright and expressive
-- [ ] Full, balanced lips
-- [ ] Natural arched eyebrows
-- [ ] Warm beige skin with light olive undertone
-- [ ] Expressions: neutral confident, soft smile, playful, serious
-- [ ] **Skip:** heavy makeup, extreme filters, synthetic smooth skin, plastic surgery look
-
----
-
-## 2. Hair References (Board: "Nyra — Hair")
-
-### Search Terms
-
-| # | Search Term | Expected Results |
-|---|-------------|-----------------|
-| 1 | `long light brown wavy hair woman voluminous` | Primary hair texture and color reference |
-| 2 | `dark blonde balayage long hair natural waves` | Slightly lighter variant, dimensional color |
-| 3 | `woman hair falling over shoulder portrait` | The signature "one shoulder" hair placement |
-| 4 | `long wavy hair half up half down style` | Hairstyle variation for dataset diversity |
-| 5 | `woman tousled beach waves hair natural texture` | Casual, textured, slightly messy waves |
-| 6 | `long hair ponytail elegant woman portrait` | Ponytail variation for outfit/poses |
-| 7 | `woman hair blowing wind portrait photography` | Dynamic hair movement, outdoor shots |
-| 8 | `light brown hair with golden highlights long` | Subtle highlight dimension for realism |
-
-### What to Look For
-- [ ] Long hair (mid-back length or longer)
-- [ ] Light brown to dark blonde base color
-- [ ] Natural waves, not curls or straight
-- [ ] Voluminous, not flat
-- [ ] Soft, healthy texture
-- [ ] **Skip:** extreme colors (platinum, red, black), very short hair, overly styled/formal updos, synthetic-looking extensions
-
----
-
-## 3. Outfit References (Board: "Nyra — Outfits")
-
-### Search Terms by Category
-
-#### Casual / Streetwear
-| # | Search Term |
-|---|-------------|
-| 1 | `woman fitted white t shirt jeans casual outfit` |
-| 2 | `woman cropped denim jacket outfit street style` |
-| 3 | `woman black leather jacket dark jeans outfit` |
-| 4 | `woman oversized hoodie leggings casual look` |
-| 5 | `woman graphic tee high waisted shorts summer` |
-| 6 | `woman cream knit sweater casual outfit` |
-
-#### Dresses / Feminine
-| # | Search Term |
-|---|-------------|
-| 7 | `woman emerald green turtleneck dress elegant` |
-| 8 | `woman burgundy bodycon mini dress outfit` |
-| 9 | `woman floral midi dress flowing summer` |
-| 10 | `woman black slip dress minimal elegant` |
-| 11 | `woman sheer corset top outfit fashion` |
-| 12 | `woman backless halter dress navy outfit` |
-| 13 | `woman white linen blouse trousers summer` |
-| 14 | `woman light summer sundress casual` |
-| 15 | `woman camel coat black dress winter outfit` |
-
-#### Professional / Edgy
-| # | Search Term |
-|---|-------------|
-| 16 | `woman charcoal blazer silk camisole outfit` |
-| 17 | `woman red silk camisole dark trousers outfit` |
-| 18 | `woman chunky knit cardigan turtleneck outfit` |
-| 19 | `woman fitted black cocktail dress elegant` |
-
-#### Athletic / Baseline
-| # | Search Term |
-|---|-------------|
-| 20 | `woman black bikini minimal beach` |
-| 21 | `woman sports bra leggings athletic outfit` |
-| 22 | `woman white tank top leggings workout` |
-| 23 | `woman cropped athletic top joggers gym` |
-
-### What to Look For
-- [ ] Fits the athletic-slim body type (not too loose, not too tight on wrong body types)
-- [ ] Modern, current fashion (2023–2026)
-- [ ] Variety in necklines, sleeve lengths, silhouettes
-- [ ] **Skip:** oversized on plus-size models (won't match body type), outdated fashion, costumes, cosplay
-
----
-
-## 4. Pose References (Board: "Nyra — Poses")
-
-### Search Terms
-
-| # | Search Term | Shot Type |
-|---|-------------|-----------|
-| 1 | `woman standing neutral pose portrait photography` | Full-body / Portrait |
-| 2 | `woman three quarter angle looking over shoulder` | Portrait / Half-body |
-| 3 | `woman profile side view portrait photography` | Portrait / Close-up |
-| 4 | `woman walking mid stride street style photography` | Full-body |
-| 5 | `woman sitting leaning pose casual photography` | Half-body / Full-body |
-| 6 | `woman hands on hips confident pose` | Half-body / Full-body |
-| 7 | `woman arms crossed portrait pose` | Portrait / Half-body |
-| 8 | `woman extreme close up face portrait` | Close-up |
-| 9 | `woman adjusting hair pose portrait` | Half-body / Portrait |
-| 10 | `woman laughing head tilted back portrait` | Portrait / Close-up |
-| 11 | `woman looking down glancing up portrait` | Close-up / Portrait |
-| 12 | `woman reclining chaise lounge elegant pose` | Full-body |
-
-### What to Look For
-- [ ] Natural, candid poses — not stiff or overly model-posed
-- [ ] Good posture but relaxed
-- [ ] Hand placement looks natural (not awkward)
-- [ ] Weight distribution looks realistic
-- [ ] **Skip:** extreme contortion, high-fashion poses that don't look natural, poses that hide the face completely
-
----
-
-## 5. Lighting References (Board: "Nyra — Lighting")
-
-### Search Terms
-
-| # | Search Term | Lighting Type |
-|---|-------------|---------------|
-| 1 | `soft diffused natural light portrait photography` | Soft natural |
-| 2 | `golden hour portrait woman warm sunlight` | Golden hour |
-| 3 | `studio softbox portrait even lighting` | Studio even |
-| 4 | `dramatic side lighting portrait moody` | Dramatic side |
-| 5 | `neon lighting portrait woman urban night` | Neon/ambient |
-| 6 | `cold blue winter light portrait photography` | Cold blue |
-| 7 | `window light portrait soft natural indoors` | Window light |
-| 8 | `backlight portrait golden hour rim light` | Backlight/rim |
-| 9 | `moody volumetric lighting portrait dark` | Moody volumetric |
-| 10 | `overcast daylight portrait soft even` | Overcast soft |
-
-### What to Look For
-- [ ] Light that sculpts the face attractively
-- [ ] Catchlights in the eyes
-- [ ] Skin tones that look warm and healthy
-- [ ] Shadows that add dimension, not hide features
-- [ ] **Skip:** flat on-camera flash, harsh midday shadows, underexposed faces, blown-out highlights on skin
-
----
-
-## 6. Environment References (Board: "Nyra — Environments")
-
-### Search Terms
-
-| # | Search Term | Environment Type |
-|---|-------------|------------------|
-| 1 | `urban street photography portrait background` | Urban street |
-| 2 | `rooftop portrait city skyline background` | Rooftop |
-| 3 | `cozy bedroom natural light portrait` | Bedroom interior |
-| 4 | `modern kitchen interior portrait natural light` | Kitchen interior |
-| 5 | `coffee shop interior portrait warm light` | Coffee shop |
-| 6 | `tree lined park path portrait golden hour` | Park/nature |
-| 7 | `beach portrait natural light summer` | Beach |
-| 8 | `sunlit courtyard mediterranean portrait` | Courtyard |
-| 9 | `underground parking garage neon portrait` | Parking garage |
-| 10 | `jazz club interior moody lighting portrait` | Jazz club/bar |
-| 11 | `luxury hotel suite portrait elegant` | Hotel suite |
-| 12 | `modern apartment balcony portrait` | Apartment balcony |
-| 13 | `fitness studio interior portrait` | Gym/fitness |
-| 14 | `professional photo studio portrait backdrop` | Studio backdrop |
-| 15 | `sidewalk cafe outdoor portrait autumn` | Sidewalk cafe |
-
-### What to Look For
-- [ ] Backgrounds that complement the subject, not distract
-- [ ] Depth of field (blurred background) in most shots
-- [ ] Environments that feel lived-in and real
-- [ ] **Skip:** overly cluttered backgrounds, fake-looking sets, backgrounds that compete with the subject for attention
-
----
-
-## 7. Mood & Style References (Board: "Nyra — Mood")
-
-### Search Terms
-
-| # | Search Term | Mood |
-|---|-------------|------|
-| 1 | `candid lifestyle photography woman natural` | Candid lifestyle |
-| 2 | `editorial fashion portrait woman magazine` | Editorial fashion |
-| 3 | `intimate portrait photography woman soft` | Intimate/portrait |
-| 4 | `street style photography woman urban` | Street style |
-| 5 | `film photography portrait woman grain` | Film/analog aesthetic |
-| 6 | `cinematic portrait photography woman` | Cinematic |
-| 7 | `girl next door portrait natural beauty` | Girl next door |
-| 8 | `modern confident woman portrait photography` | Modern confident |
-| 9 | `photorealistic portrait DSLR sharp focus` | Photorealistic technical |
-| 10 | `analog film portrait warm tones kodak` | Warm film tones |
-
-### What to Look For
-- [ ] Images that feel "real" — not overly processed
-- [ ] Emotion and personality coming through
-- [ ] Camera/lens language: 35mm, 50mm, 85mm, shallow depth of field
-- [ ] Film grain or clean digital — both work, pick one aesthetic and stick to it
-- [ ] **Skip:** heavy Instagram filters, HDR look, cartoon/illustration, AI-generated art, overly retouched "plastic" skin
-
----
-
-## 8. Body Type / Proportion References (Board: "Nyra — Body")
-
-### Search Terms
+## CATEGORY 1 — Face Anchors (Most Critical)
+> Target: 15–20 pins | Priority: HIGHEST
 
 | # | Search Term |
 |---|-------------|
-| 1 | `athletic slim woman body proportions portrait` |
-| 2 | `woman natural waist hip ratio full body` |
-| 3 | `woman toned slim fit body type photography` |
-| 4 | `woman 5'6" proportions full body street style` |
-| 5 | `woman athletic build bikini full body` |
-| 6 | `woman fitted dress body silhouette photography` |
-
-### What to Look For
-- [ ] Athletic-slim but not underweight
-- [ ] Natural waist-to-hip ratio (not exaggerated hourglass, not straight)
-- [ ] Toned arms and legs but not muscular/bodybuilder
-- [ ] Proportions that look healthy and realistic
-- [ ] **Skip:** extreme body types, heavy editing on waist/hips, poses that distort proportions
+| 1 | `attractive woman oval face high cheekbones natural makeup portrait` |
+| 2 | `hazel green eyes woman close-up soft lighting` |
+| 3 | `girl next door beauty portrait natural light` |
+| 4 | `all american girl face portrait photorealistic` |
+| 5 | `woman defined jawline high cheekbones confident expression` |
+| 6 | `warm beige skin tone woman natural beauty portrait` |
+| 7 | `mixed european american woman face portrait editorial` |
+| 8 | `woman almond shaped eyes expressive gaze portrait` |
+| 9 | `woman full lips natural pink no filter portrait` |
+| 10 | `approachable attractive woman face candid portrait` |
 
 ---
 
-## Pinterest Collection Workflow
+## CATEGORY 2 — Hair Reference
+> Target: 10–15 pins | Priority: HIGH
 
-### Step 1: Create Boards
-Create 8 boards in Pinterest:
-1. `Nyra — Face`
-2. `Nyra — Hair`
-3. `Nyra — Outfits`
-4. `Nyra — Poses`
-5. `Nyra — Lighting`
-6. `Nyra — Environments`
-7. `Nyra — Mood`
-8. `Nyra — Body`
-
-### Step 2: Search & Save (30–60 minutes)
-- Run each search term from this guide
-- Save 5–10 images per board (max 15)
-- Only save images that match Nyra's specific archetype
-- Use the "What to Look For" checklists as filters
-
-### Step 3: Review & Curate (15 minutes)
-- Open each board
-- Delete images that are too different from the core archetype
-- Ensure consistency across boards (same "girl" vibe)
-- Aim for 8–12 solid references per board
-
-### Step 4: Export for ComfyUI
-- Download your top 3–5 face images as **anchor references** for ComfyUI's ReferenceLatent node
-- Download 2–3 hair images, 3–4 outfit images, and 2–3 pose images as secondary references
-- Save to a local folder: `D:/Nyra_References/` or similar
-- These are your visual ground truth for generation
+| # | Search Term |
+|---|-------------|
+| 11 | `woman light brown wavy hair voluminous portrait` |
+| 12 | `dark blonde soft waves mid length hair woman` |
+| 13 | `light brown hair natural waves over shoulder` |
+| 14 | `woman tousled beach waves light brown hair` |
+| 15 | `half up half down light brown wavy hair woman` |
+| 16 | `woman dark blonde waves voluminous natural hair portrait` |
+| 17 | `loose wavy hair light brunette woman outdoor` |
 
 ---
 
-## Pro Tips for Better Pinterest Results
+## CATEGORY 3 — Full Body / Outfit References
+> Target: 15–20 pins | Priority: HIGH
 
-1. **Use Pinterest's "More like this" feature** — click any image and scroll down for algorithmically similar pins
-2. **Follow the source photographer** — if you find one great image, check the photographer's other work
-3. **Use the "Visual search" camera icon** — upload one good reference and find visually similar images
-4. **Filter by "Photo"** — click the filter button and select "Photo" to avoid illustrations and AI art
-5. **Avoid Pinterest's own AI-generated pins** — they're becoming common and look subtly wrong
-6. **Look for photography blogs and portfolios** — pins from `500px.com`, `behance.net`, `portraitphotography.com` are usually high-quality real photos
+| # | Search Term |
+|---|-------------|
+| 18 | `woman fitted white t-shirt light blue jeans casual street style` |
+| 19 | `woman black leather jacket dark jeans street style editorial` |
+| 20 | `woman cropped denim jacket white tank top outfit` |
+| 21 | `burgundy bodycon mini dress woman confident pose` |
+| 22 | `woman emerald green turtleneck dark trousers fashion` |
+| 23 | `woman flowy floral midi dress outdoor editorial` |
+| 24 | `woman black slip dress minimal chic portrait` |
+| 25 | `sheer corset top low rise jeans woman fashion editorial` |
+| 26 | `woman red silk camisole dark trousers editorial look` |
+| 27 | `woman camel coat black dress winter editorial` |
+| 28 | `woman cream knit sweater minimal cozy portrait` |
+| 29 | `woman charcoal blazer silk camisole professional look` |
+| 30 | `woman summer sundress light outdoor candid` |
+| 31 | `woman cropped graphic tee high waisted shorts casual` |
+| 32 | `woman athletic slim body black sports bra leggings` |
 
 ---
 
-*File: pinterest_search_terms.md | Character: Nyra | Purpose: Reference image collection for ComfyUI generation*
+## CATEGORY 4 — Pose References
+> Target: 10–12 pins | Priority: MEDIUM
+
+| # | Search Term |
+|---|-------------|
+| 33 | `woman standing confident hands on hips full body portrait` |
+| 34 | `woman looking over shoulder three quarter angle editorial` |
+| 35 | `woman walking mid stride street style candid` |
+| 36 | `woman sitting leaning relaxed portrait indoor` |
+| 37 | `woman arms crossed confident pose editorial` |
+| 38 | `woman profile side view portrait dramatic lighting` |
+| 39 | `woman extreme close-up face only portrait eyes` |
+
+---
+
+## CATEGORY 5 — Lighting References
+> Target: 8–10 pins | Priority: MEDIUM
+
+| # | Search Term |
+|---|-------------|
+| 40 | `woman golden hour portrait warm sunlight outdoor` |
+| 41 | `woman soft diffused natural light portrait window` |
+| 42 | `woman moody dramatic side lighting portrait studio` |
+| 43 | `woman studio softbox even lighting portrait clean` |
+| 44 | `woman neon ambient light portrait urban night` |
+| 45 | `woman cold blue winter light outdoor portrait` |
+
+---
+
+## CATEGORY 6 — Environment / Context References
+> Target: 8–10 pins | Priority: MEDIUM
+
+| # | Search Term |
+|---|-------------|
+| 46 | `woman urban street style city editorial outdoor` |
+| 47 | `woman rooftop portrait golden hour city view` |
+| 48 | `woman indoor bedroom lifestyle candid natural` |
+| 49 | `woman studio portrait minimal clean background` |
+| 50 | `woman outdoor beach portrait natural sunlight` |
+| 51 | `woman coffee shop cozy indoor portrait lifestyle` |
+| 52 | `woman gym fitness portrait athletic` |
+| 53 | `woman night city portrait ambient neon light` |
+
+---
+
+## CATEGORY 7 — Mood / Aesthetic Direction
+> Target: 8–10 pins | Priority: LOW-MEDIUM
+
+| # | Search Term |
+|---|-------------|
+| 54 | `candid lifestyle portrait woman editorial photorealistic` |
+| 55 | `street style fashion woman confident urban` |
+| 56 | `editorial fashion portrait woman modern aesthetic` |
+| 57 | `intimate portrait woman soft expression close up` |
+| 58 | `woman modern confident aesthetic portrait fashion editorial` |
+| 59 | `photorealistic woman portrait DSLR shallow depth of field` |
+| 60 | `woman natural beauty aesthetic portrait no filter` |
+
+---
+
+## Summary
+
+| Category | # of Terms | Target Pins |
+|----------|-----------|-------------|
+| Face Anchors | 10 | 15-20 |
+| Hair Reference | 7 | 10-15 |
+| Full Body / Outfit | 15 | 15-20 |
+| Pose Reference | 7 | 10-12 |
+| Lighting Reference | 6 | 8-10 |
+| Environment / Context | 8 | 8-10 |
+| Mood / Aesthetic | 7 | 8-10 |
+| **TOTAL** | **60** | **74-97 pins** |
+
+---
+
+## Priority Search Order (Recommended)
+
+1. **Face Anchors first** - get your 5 perfect face references before anything else
+2. **Hair Reference** - confirm hair type matches Nyra
+3. **Full Body / Outfit** - largest category, builds pose + clothing diversity
+4. **Pose Reference** - supplement full-body variety
+5. **Lighting + Environment** - adds contextual variety
+6. **Mood / Aesthetic** - reference for overall vibe, lowest priority
+
+---
+
+> *File: pinterest_search_terms.md | 60 search terms | 7 categories | Optimized for Nyra character LoRA dataset*

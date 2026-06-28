@@ -11,3 +11,11 @@ ENV/
 env/
 .env
 .DS_Store
+
+# MCP config files (may contain API tokens)
+mcp_config_copy.json
+mcp_config_copy_txt.json
+
+# Log files
+agy.log
+*.log

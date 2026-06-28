@@ -228,7 +228,12 @@ class Config:
                 if section in data and isinstance(data[section], dict):
                     for key, val in data[section].items():
                         attr = key
-                        if section == 'ensemble' and not key.startswith('weight_'):
+                        if section == 'character':
+                            if key == 'name':
+                                attr = 'character_name'
+                            elif key == 'description':
+                                attr = 'character_description'
+                        elif section == 'ensemble' and not key.startswith('weight_'):
                             attr = f'weight_{key}'
                         elif section == 'ai_brain':
                             if key == 'mode':
@@ -401,6 +406,8 @@ class ModelManager:
             inputs = self.clip_processor(images=pil_img, return_tensors="pt").to(self.device)
             with torch.no_grad():
                 image_features = self.clip_model.get_image_features(**inputs)
+            if hasattr(image_features, "pooler_output"):
+                image_features = image_features.pooler_output
             emb = image_features.cpu().numpy().flatten()
             emb = emb / np.linalg.norm(emb)
             return emb
@@ -416,6 +423,8 @@ class ModelManager:
             inputs = self.clip_processor(text=[text], return_tensors="pt", padding=True).to(self.device)
             with torch.no_grad():
                 text_features = self.clip_model.get_text_features(**inputs)
+            if hasattr(text_features, "pooler_output"):
+                text_features = text_features.pooler_output
             emb = text_features.cpu().numpy().flatten()
             emb = emb / np.linalg.norm(emb)
             return emb
@@ -495,7 +504,11 @@ class InsightFaceScorer(BaseScorer):
             
             # Quality checks
             det_score = getattr(primary, 'det_score', 0.5)
-            face_quality = getattr(primary, 'face_quality', 0.5)
+            if det_score is None:
+                det_score = 0.5
+            face_quality = getattr(primary, 'face_quality', 1.0)
+            if face_quality is None:
+                face_quality = 1.0
             
             # Compare to archetype embeddings (cosine similarity)
             candidate_emb = primary.embedding
@@ -1140,8 +1153,12 @@ class EnsembleScorer:
             return 50.0  # neutral if no scorers active
         
         raw = total / active_weights
-        # Any REJECT status immediately caps score below review threshold
-        statuses = [r.status for r in scores.values()]
+        # Any REJECT status on active scorers immediately caps score below review threshold
+        statuses = [
+            result.status 
+            for key, result in scores.items() 
+            if self.weights.get(key, 0) > 0 and result.score >= 0
+        ]
         if "REJECT" in statuses:
             raw = min(raw, self.cfg.overall_review / 100.0 - 0.05)
         
@@ -1296,11 +1313,14 @@ class ProductionPipeline:
             # Compute ensemble score
             overall_score = self.ensemble.compute(scores)
             
-            # Determine overall status
-            statuses = [s.status for s in scores.values()] + [dup_result.status]
-            if "REJECT" in statuses:
+            # Determine overall status (only from active scorers and duplicates)
+            active_statuses = [
+                s.status for k, s in scores.items()
+                if self.ensemble.weights.get(k, 0) > 0 and s.score >= 0
+            ] + [dup_result.status]
+            if "REJECT" in active_statuses:
                 overall_status = "REJECT"
-            elif "REVIEW" in statuses or overall_score < self.cfg.overall_review:
+            elif "REVIEW" in active_statuses or overall_score < self.cfg.overall_review:
                 overall_status = "REVIEW"
             elif overall_score >= self.cfg.overall_pass:
                 overall_status = "PASS"
@@ -1366,7 +1386,17 @@ class ProductionPipeline:
             self.results.append(record)
             
             # Copy to category folder
-            cat_folder = record["category"]
+            cat_to_folder = {
+                "face_anchor": "face_anchors",
+                "hair": "hair_refs",
+                "outfit": "outfit_refs",
+                "pose": "pose_refs",
+                "full_body": "full_body_refs",
+                "approved": "approved_all",
+                "review": "review",
+                "reject": "reject",
+            }
+            cat_folder = cat_to_folder.get(record["category"], record["category"])
             dest = self.output_dir / cat_folder / img_path.name
             try:
                 shutil.copy2(img_path, dest)

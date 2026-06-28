@@ -13,9 +13,9 @@ archetype:
   match_pass: 0.62
   match_review: 0.40
   
-  # Skin tone tolerance (CIEDE2000 in LAB space) - Tightened for strict matching
-  skin_tone_max_delta: 9.0
-  skin_tone_review_delta: 14.0
+  # Skin tone tolerance (CIEDE2000 in LAB space) - Relaxed to accommodate lighting/shading variations
+  skin_tone_max_delta: 24.0
+  skin_tone_review_delta: 32.0
 
 quality:
   # Blur (Laplacian variance, higher = sharper) - Tightened
@@ -59,14 +59,15 @@ shot_type:
 ensemble:
   # Weights for the 0-100 production score (must sum to 1.0)
   # Adjust to prioritize what matters most for your use case
-  archetype_match: 0.25
+  ai_brain: 0.35
+  archetype_match: 0.20
   semantic_clip: 0.15
   skin_tone: 0.10
-  blur: 0.10
+  blur: 0.05
   exposure: 0.05
-  aesthetic: 0.15
-  face_quality: 0.10
-  pose_quality: 0.10
+  aesthetic: 0.00
+  face_quality: 0.05
+  pose_quality: 0.05
 
 output:
   # Score thresholds for final category assignment
@@ -91,7 +92,7 @@ ai_brain:
   # "local" = only CLIP + InsightFace (fully offline, no API needed)
   # "gemini" = Google Gemini API (free tier: 1,500 requests/day for flash)
   # "cli" = Custom command-line tool (e.g., ollama run llava)
-  mode: "gemini"
+  mode: "local"
 
   # Gemini API settings
   # Get your FREE API key here: https://aistudio.google.com/app/apikey
@@ -105,7 +106,7 @@ ai_brain:
   #   cli_command: 'curl -s http://localhost:11434/api/generate -d "{""model"": ""llava"", ""prompt"": ""{prompt}"", ""images"": [""{image_b64}""], ""stream"": false}"'
   # Example with local script:
   #   cli_command: 'python analyze_image.py --image {image_path}'
-  cli_command: 'agy --dangerously-skip-permissions --print "Analyze the image at \'{image_path}\': {prompt}"'
+  cli_command: "agy --dangerously-skip-permissions --print \"Analyze the image at '{image_path}': {prompt}\""
   cli_timeout: 60
 
   # Structured questions the AI brain answers about each image
