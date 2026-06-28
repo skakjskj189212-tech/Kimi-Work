@@ -1,0 +1,122 @@
+# Pinterest Reference Curation QC — Production Configuration
+# ============================================================
+# Edit these values to tune the QC pipeline without touching code.
+# All distances are in perceptual/score units; all percentages are 0-100.
+
+character:
+  name: "nyra"
+  description: "attractive young woman, 24 years old, light brown to dark blonde hair, hazel-green eyes, warm beige skin with light olive undertone, oval face with high cheekbones, defined jawline, full lips, athletic-slim body, modern girl next door aesthetic"
+  # This text is used by CLIP for semantic similarity scoring
+
+archetype:
+  # Face match thresholds (cosine similarity, 0-1) - Tightened for strict QC
+  match_pass: 0.62
+  match_review: 0.40
+  
+  # Skin tone tolerance (CIEDE2000 in LAB space) - Tightened for strict matching
+  skin_tone_max_delta: 9.0
+  skin_tone_review_delta: 14.0
+
+quality:
+  # Blur (Laplacian variance, higher = sharper) - Tightened
+  blur_pass: 120.0
+  blur_review: 45.0
+  
+  # Exposure (percentage of clipped pixels)
+  clip_black_reject: 25.0
+  clip_white_reject: 20.0
+  clip_review: 5.0
+
+  # Face quality (InsightFace quality score, 0-1)
+  face_quality_pass: 0.6
+  face_quality_review: 0.3
+
+  # Aesthetic score (CLIP-based, 0-10)
+  aesthetic_pass: 5.5
+  aesthetic_review: 4.0
+
+duplicates:
+  # Perceptual hash distance
+  reject_dist: 2
+  review_dist: 8
+  
+  # CLIP embedding similarity threshold (cosine)
+  clip_dup_threshold: 0.92
+
+pose:
+  # Body proportion checks (MediaPipe / DWPose)
+  shoulder_hip_min: 0.7
+  shoulder_hip_max: 1.6
+  head_body_min: 0.08
+  head_body_max: 0.45
+
+shot_type:
+  # Face area ratio thresholds for shot classification
+  closeup_min: 0.35
+  portrait_min: 0.15
+  halfbody_min: 0.08
+
+ensemble:
+  # Weights for the 0-100 production score (must sum to 1.0)
+  # Adjust to prioritize what matters most for your use case
+  archetype_match: 0.25
+  semantic_clip: 0.15
+  skin_tone: 0.10
+  blur: 0.10
+  exposure: 0.05
+  aesthetic: 0.15
+  face_quality: 0.10
+  pose_quality: 0.10
+
+output:
+  # Score thresholds for final category assignment
+  overall_pass: 60.0
+  overall_review: 40.0
+
+  # Top-N images per category to keep
+  top_n_face_anchors: 10
+  top_n_hair: 15
+  top_n_outfit: 15
+  top_n_pose: 15
+  top_n_full_body: 10
+
+models:
+  # Model selection (local, offline after first download)
+  clip_model: "openai/clip-vit-large-patch14"  # ~1.7GB
+  insightface_model: "buffalo_l"  # Auto-downloads on first run
+  use_dwpose: false  # Set true if mmpose/controlnet_aux installed
+
+ai_brain:
+  # Choose the primary AI brain for visual analysis
+  # "local" = only CLIP + InsightFace (fully offline, no API needed)
+  # "gemini" = Google Gemini API (free tier: 1,500 requests/day for flash)
+  # "cli" = Custom command-line tool (e.g., ollama run llava)
+  mode: "gemini"
+
+  # Gemini API settings
+  # Get your FREE API key here: https://aistudio.google.com/app/apikey
+  # Free tier: 1,500 requests/day for gemini-1.5-flash
+  gemini_api_key: ""  # Or set env var GEMINI_API_KEY
+  gemini_model: "gemini-1.5-flash"
+  gemini_timeout: 30
+
+  # CLI tool settings (for any local CLI that accepts image path + returns JSON)
+  # Example with Ollama + LLaVA:
+  #   cli_command: 'curl -s http://localhost:11434/api/generate -d "{""model"": ""llava"", ""prompt"": ""{prompt}"", ""images"": [""{image_b64}""], ""stream"": false}"'
+  # Example with local script:
+  #   cli_command: 'python analyze_image.py --image {image_path}'
+  cli_command: 'agy --dangerously-skip-permissions --print "Analyze the image at \'{image_path}\': {prompt}"'
+  cli_timeout: 60
+
+  # Structured questions the AI brain answers about each image
+  # These are sent to Gemini/CLI for natural language visual analysis
+  questions:
+    - "Does this image show a woman with light brown to dark blonde hair?"
+    - "Does this image show a woman with hazel-green or green eyes?"
+    - "Does this image show a woman with warm beige or light olive skin tone?"
+    - "Does this image show a woman with an oval or heart-shaped face and high cheekbones?"
+    - "Is this a high-quality, photorealistic portrait photograph?"
+
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  print_summary: true
