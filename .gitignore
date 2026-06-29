@@ -19,3 +19,7 @@ mcp_config_copy_txt.json
 # Log files
 agy.log
 *.log
+
+# Large package files
+nyra_qc_package.zip
+

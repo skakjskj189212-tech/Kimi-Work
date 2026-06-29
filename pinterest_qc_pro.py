@@ -322,6 +322,10 @@ class ModelManager:
         self.facenet_archetype_embeddings = None
         self.archetype_skin_lab = None
         
+        # Cache for last image CLIP embedding to avoid multiple passes on the same image
+        self._last_image_id = None
+        self._last_image_emb = None
+        
         self._init_clip()
         self._init_insightface()
         self._init_facenet()
@@ -402,6 +406,12 @@ class ModelManager:
         """Compute CLIP image embedding. Returns normalized numpy array."""
         if self.clip_model is None or self.clip_processor is None:
             return None
+        
+        # Check if the image embedding is already cached for the current PIL Image object
+        img_id = id(pil_img)
+        if self._last_image_id == img_id:
+            return self._last_image_emb
+            
         try:
             inputs = self.clip_processor(images=pil_img, return_tensors="pt").to(self.device)
             with torch.no_grad():
@@ -410,6 +420,11 @@ class ModelManager:
                 image_features = image_features.pooler_output
             emb = image_features.cpu().numpy().flatten()
             emb = emb / np.linalg.norm(emb)
+            
+            # Cache the calculated embedding
+            self._last_image_id = img_id
+            self._last_image_emb = emb
+            
             return emb
         except Exception as e:
             self.logger.debug(f"CLIP image embedding failed: {e}")

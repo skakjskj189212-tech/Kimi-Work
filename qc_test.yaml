@@ -1,0 +1,21 @@
+name: Pinterest QC sanity check
+description: Verify that the QC pipeline produces the expected number of approved images.
+steps:
+  - name: Run the QC pipeline
+    command: python run_qc.py
+    timeout: 300
+
+  - name: Verify output files exist
+    assert:
+      - path: output/report.csv
+        exists: true
+      - path: output/report.json
+        exists: true
+
+  - name: Verify PASS count
+    command: python -c "import json; data = json.load(open('output/report.json', encoding='utf-8')); pass_count = sum(1 for img in data['images'] if img['overall_status'] == 'PASS'); print(f'PASS_COUNT={pass_count}'); assert pass_count == 37, f'Expected 37, got {pass_count}'"
+    timeout: 10
+
+  - name: Verify REJECT count
+    command: python -c "import json; data = json.load(open('output/report.json', encoding='utf-8')); reject_count = sum(1 for img in data['images'] if img['overall_status'] == 'REJECT'); print(f'REJECT_COUNT={reject_count}'); assert reject_count == 40, f'Expected 40, got {reject_count}'"
+    timeout: 10
